@@ -1,0 +1,39 @@
+.popup__role {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    padding: 30px 0 14px;
+    margin: 0;
+}
+
+input.popup__role::-webkit-input-placeholder {    
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.22;
+    color: #000000;
+}
+
+input.popup__role:-moz-placeholder { 
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.22;
+    color: #000; 
+ }
+ 
+ input.popup__role::-moz-placeholder {  
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.22;
+    color: #000;
+ }
+ 
+ input.popup__role:-ms-input-placeholder {  
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.22; 
+    color: #000;
+ }

@@ -15,12 +15,10 @@
             <img src="./images/profile__avatar.jpg" alt="" class="profile__avatar">
             <div class="profile__info">
                 <div class="profile__text">
-                    <h1 class="profile__name">
-                        Жак-Ив Кусто
+                    <h1 class="profile__name">Жак-Ив Кусто
                     </h1>
                 
-                    <p class="profile__role">
-                        Исследователь океана
+                    <p class="profile__role">Исследователь океана
                     </p>
                 </div>
                 <button class="profile__edit">
@@ -92,15 +90,15 @@
     <footer class="footer" id="footer">
         <p class="footer__copyright">&#169;2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__none">
         <div class="popup__container">
             <span class="popup__close">&#9587;</span>
             <h2 class="popup__title">
                 Редактировать профиль
             </h2>
-            <input type="text" placeholder="Жак-Ив Кусто"  class="popup__name">
-            <input type="text" placeholder="Исследователь океана"  class="popup__role">
-            <button class="popup__button">Сохранить</button>
+            <input type="text" placeholder="John"  maxlength="20" class="popup__name">
+            <input type="text" placeholder="Dow"  maxlength="65" class="popup__role">
+            <button class="popup__save">Сохранить</button>
         </div>
     </div>
     <script src="./pages/index.js"></script>

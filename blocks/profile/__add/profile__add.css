@@ -11,6 +11,7 @@
     align-self: center;
     text-align: center;
     transition: all 0.2s ease-in-out;
+    max-width: 282px;
 }
 
 .profile__add:hover, .profile__add:focus {

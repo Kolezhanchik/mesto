@@ -9,9 +9,6 @@ let profileName = document.querySelector('.profile__name');
 let profileRole = document.querySelector('.profile__role');
 
 function openPopup(){
-    let popupName = document.querySelector('.popup__name');
-    let popupRole = document.querySelector('.popup__role');
-
     // popup.style.display = "block";
 
     popup.classList.remove('popup__none');
@@ -35,4 +32,3 @@ function savePopup(){
 edit.addEventListener('click', openPopup);
 close.addEventListener('click', closePopup);
 save.addEventListener('click', savePopup);
-popup.addEventListener('click', closePopup);

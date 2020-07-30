@@ -1,0 +1,29 @@
+.locations__card {
+    background-color: #ffffff;
+    color: #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    max-width: 31.9%;;
+    min-width: 282px;
+}
+/* 
+.locations__card:not(:nth-child(3n)) {
+    margin-right: 18px;
+} */
+
+
+@media screen and (max-width: 880px) {
+    .locations__card {
+        min-width: 45%;
+        margin-right: 0;
+    }  
+}
+
+@media screen and (max-width: 720px) {
+    .locations__card {
+        min-width: 94%;
+        margin-bottom: 18px;
+    }  
+}

@@ -1,0 +1,12 @@
+.header__image {
+    max-width: 142.01px;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .header__image {
+        max-width: 103.74px;
+    }    
+}

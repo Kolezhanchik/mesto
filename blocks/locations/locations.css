@@ -1,0 +1,11 @@
+.locations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 720px) {
+    .locations {
+        justify-content: center;
+    }
+}

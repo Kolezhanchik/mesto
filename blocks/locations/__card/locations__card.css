@@ -1,7 +1,8 @@
 .locations__card {
     background-color: #ffffff;
     color: #000000;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;

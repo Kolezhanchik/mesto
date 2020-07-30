@@ -19,7 +19,6 @@
 @import url(../blocks/locations/locations.css);
 @import url(../blocks/locations/__card/locations__card.css);
 @import url(../blocks/locations/__image/locations__image.css);
-@import url(../blocks/locations/name/__name.css);
 @import url(../blocks/locations/__info/locations__info.css);
 @import url(../blocks/locations/__name/locations__name.css);
 @import url(../blocks/locations/__rate/locations__rate.css);

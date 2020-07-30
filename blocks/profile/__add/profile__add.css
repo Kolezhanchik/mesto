@@ -10,6 +10,13 @@
     color: inherit;
     align-self: center;
     text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.profile__add:hover {
+    color: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
 }
 
 

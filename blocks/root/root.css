@@ -7,7 +7,7 @@
     margin: 0 auto;
 }
 
-@media screen and (max-width: 882px) {
+@media screen and (max-width: 920px) {
     .root {
         padding: 0 50px;
     }    

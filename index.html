@@ -37,7 +37,7 @@
                     <h2 class="location__name">
                         Карачаевск
                     </h2>
-                    <button class="location__rate">&#9825;</button>
+                    <button type="button" class="location__rate">&#9825;</button>
                 </div>
             </div>
             <div class="location">
@@ -46,7 +46,7 @@
                     <h2 class="location__name">
                         Гора Эльбрус
                     </h2>
-                    <button class="location__rate">&#9825;</button>
+                    <button type="button" class="location__rate">&#9825;</button>
                 </div>
             </div>
             <div class="location">
@@ -55,7 +55,7 @@
                     <h2 class="location__name">
                         Домбай
                     </h2>
-                    <button type class="location__rate">&#9825;</button>
+                    <button type="button" class="location__rate">&#9825;</button>
                 </div>
             </div>
             <div class="location">
@@ -64,7 +64,7 @@
                     <h2 class="location__name">
                         Гора Эльбрус
                     </h2>
-                    <button class="location__rate">&#9825;</button>
+                    <button type="button" class="location__rate">&#9825;</button>
                 </div>
             </div>
             <div class="location">
@@ -73,7 +73,7 @@
                     <h2 class="location__name">
                         Домбай
                     </h2>
-                    <button class="location__rate">&#9825;</button>
+                    <button type="button" class="location__rate">&#9825;</button>
                 </div>
             </div>
             <div class="location">
@@ -82,7 +82,7 @@
                     <h2 class="location__name">
                         Карачаево-Черкесия
                     </h2>
-                    <button class="location__rate">&#9825;</button>
+                    <button type="button" class="location__rate">&#9825;</button>
                 </div>
             </div>
         </section>
@@ -90,16 +90,16 @@
     <footer class="footer">
         <p class="footer__copyright">&copy;2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_hidden">
-        <div class="popup__container">
-            <span class="popup__close">&#9587;</span>
+    <div class="popup popup_hidden"> 
+        <form action="index.html" method="post" class="popup__container">
+            <button type="button" class="popup__close">&#9587;</button>
             <h2 class="popup__title">
                 Редактировать профиль
             </h2>
-            <input type="text" placeholder="John" class="popup__name">
-            <input type="text" placeholder="Dow" maxlength="55" class="popup__role">
-            <button class="popup__save">Сохранить</button>
-        </div>
+            <input type="text" name="user-name" placeholder="John" class="popup__text popup__text_name">
+            <input type="text" name="user-role" placeholder="Dow" maxlength="55" class="popup__text popup__text_role">
+            <button type="submit" class="popup__save">Сохранить</button>
+        </form>
     </div>
     <script src="./scripts/index.js"></script>
 </body>

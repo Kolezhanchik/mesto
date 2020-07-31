@@ -2,4 +2,11 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    max-width: 70%;
+}
+
+@media screen and (max-width: 540px){
+    .profile__info {
+        max-width:  95%;
+    }
 }

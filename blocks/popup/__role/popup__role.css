@@ -4,6 +4,7 @@
     outline: none;
     padding: 30px 0 14px;
     margin: 0;
+    color: #000000;
 }
 
 .popup__role:focus {
@@ -23,7 +24,7 @@ input.popup__role:-moz-placeholder {
     font-weight: normal;
     font-size: 14px;
     line-height: 1.22;
-    color: #000; 
+    color: #000000;
  }
  
  input.popup__role::-moz-placeholder {  
@@ -31,7 +32,7 @@ input.popup__role:-moz-placeholder {
     font-weight: normal;
     font-size: 14px;
     line-height: 1.22;
-    color: #000;
+    color: #000000;
  }
  
  input.popup__role:-ms-input-placeholder {  
@@ -39,5 +40,5 @@ input.popup__role:-moz-placeholder {
     font-weight: normal;
     font-size: 14px;
     line-height: 1.22; 
-    color: #000;
+    color: #000000;
  }

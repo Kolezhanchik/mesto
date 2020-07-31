@@ -1,4 +1,4 @@
-.locations__card {
+.location {
     background-color: #ffffff;
     color: #000000;
     -webkit-box-sizing: border-box;
@@ -9,21 +9,16 @@
     max-width: 31.9%;;
     min-width: 282px;
 }
-/* 
-.locations__card:not(:nth-child(3n)) {
-    margin-right: 18px;
-} */
-
 
 @media screen and (max-width: 880px) {
-    .locations__card {
+    .location {
         min-width: 45%;
         margin-right: 0;
     }  
 }
 
 @media screen and (max-width: 720px) {
-    .locations__card {
+    .location {
         min-width: 94%;
         margin-bottom: 18px;
     }  

@@ -20,6 +20,17 @@
     box-sizing: border-box;
 }
 
+@media screen and (max-width: 1240px) {
+    .popup__container {
+        margin: calc(70vh - 345px) auto 0;
+   }
+ }
+
+ @media screen and (max-width: 768px) {
+    .popup__container {
+        margin: calc(90vh - 345px) auto 0;
+   }
+ }
 
 @media screen and (max-width: 450px) {
    .popup__container {

@@ -1,0 +1,4 @@
+.location__rate_marked::before {
+    content: ' \2665';
+    /* color: #e61212; */
+}

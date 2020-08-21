@@ -16,23 +16,22 @@
             <div class="profile__info">
                 <div class="profile__text">
                     <h1 class="profile__name">Жак-Ив Кусто
-                    </h1>
-                
+                    </h1>                
                     <p class="profile__role">Исследователь океана
                     </p>
                 </div>
                 <button class="profile__edit">
                     &#128393;
                 </button>
-            </div>
-            
+            </div>            
             <button class="profile__add">
                 &#65291;
             </button>
         </section>
         <section class="locations">
-            <div class="location">
-                <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="location__image">
+            <!-- <div class="location">
+                <button type="button" class="location__trash"></button>
+                <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="location__image">                
                 <div class="location__info">
                     <h2 class="location__name">
                         Карачаевск
@@ -84,23 +83,52 @@
                     </h2>
                     <button type="button" class="location__rate">&#9825;</button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy;2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_hidden"> 
-        <form action="index.html" name="profileEdit" method="post" class="popup__container">
-            <button type="button" class="popup__close">&#9587;</button>
+    <div class="popup popup_type_edit popup_hidden"> 
+        <form action="index.html" name="profileEdit" method="post" class="popup__container popup__container_type_edit">
+            <button type="button" class="popup__close popup__close_profile-edit">&#9587;</button>
             <h2 class="popup__title">
                 Редактировать профиль
             </h2>
             <input type="text" name="user-name" placeholder="John" class="popup__text popup__text_type_name">
             <input type="text" name="user-role" placeholder="Dow" maxlength="55" class="popup__text popup__text_type_role">
-            <button type="submit" class="popup__save">Сохранить</button>
+            <button type="submit" class="popup__btn popup__btn_type_edit">Сохранить</button>
         </form>
     </div>
+    <div class="popup popup_type_add popup_hidden"> 
+        <form action="index.html" name="locationAdd" method="GET" class="popup__container popup__container_type_add">
+            <button type="button" class="popup__close popup__close_location-add">&#9587;</button>
+            <h2 class="popup__title">
+                Новое место
+            </h2>
+            <input type="text" name="location-name" placeholder="Название" class="popup__text popup__text_type_location-name">
+            <input type="text" name="location-ref" placeholder="Ссылка на картинку"  class="popup__text popup__text_type_ref">
+            <button type="submit" class="popup__btn popup__btn_type_add">Создать</button>
+        </form>
+    </div>
+    <div class="popup popup_type_show popup_hidden"> 
+       <div class="popup__container popup__container_image"> 
+           <button type="button" class="popup__close popup__close_image">&#9587;</button>
+            <img src="#" alt="" class="popup__image">
+            <p class="popup__caption"></p>
+       </div> 
+    </div>
+    <template id="location-card-template"> 
+        <div class="location">
+            <img src="" alt="" class="location__image">
+            <button type="button" class="location__trash"></button>
+            <div class="location__info">
+                <h2 class="location__name">          
+                </h2>
+                <button type="button" class="location__rate"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

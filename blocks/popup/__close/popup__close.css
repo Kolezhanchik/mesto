@@ -1,7 +1,7 @@
 .popup__close {
     position: absolute;
-    top: -38px;
-    right: -32px;
+    top: -40px;
+    right: -45px;
     font-size: 30px;
     font-weight: 900;
     -webkit-transition: all ease-in-out 0.6s;
@@ -20,6 +20,16 @@
     opacity: 0.7;
 
 }
+
+.popup__close:focus {
+    outline: none;
+}
+@media screen and (max-width: 540px) {
+    .popup__close {
+        top: -38px;
+        right: -32px;
+    }
+ }
 
 @media screen and (max-width: 450px) {
     .popup__close {

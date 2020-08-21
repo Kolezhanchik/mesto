@@ -8,4 +8,6 @@
     right: 0;
     position: fixed;
     z-index: 2;
+    visibility: visible;
+    opacity: 1;
 }

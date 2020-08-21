@@ -1,4 +1,10 @@
 .location__image {
-    width: 100%;
     min-width: 282px;
+    height: 78%;
+}
+
+@media screen and (max-width: 890px) {    
+    .location__image {
+        min-width: 100%;
+    }   
 }

@@ -15,10 +15,8 @@
             <img src="./images/profile__avatar.jpg" alt="Фото Жак-Ив Кусто" class="profile__avatar">
             <div class="profile__info">
                 <div class="profile__text">
-                    <h1 class="profile__name">Жак-Ив Кусто
-                    </h1>                
-                    <p class="profile__role">Исследователь океана
-                    </p>
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>                
+                    <p class="profile__role">Исследователь океана</p>
                 </div>
                 <button class="profile__edit">
                     &#128393;
@@ -28,62 +26,7 @@
                 &#65291;
             </button>
         </section>
-        <section class="locations">
-            <!-- <div class="location">
-                <button type="button" class="location__trash"></button>
-                <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="location__image">                
-                <div class="location__info">
-                    <h2 class="location__name">
-                        Карачаевск
-                    </h2>
-                    <button type="button" class="location__rate">&#9825;</button>
-                </div>
-            </div>
-            <div class="location">
-                <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="location__image">
-                <div class="location__info">
-                    <h2 class="location__name">
-                        Гора Эльбрус
-                    </h2>
-                    <button type="button" class="location__rate">&#9825;</button>
-                </div>
-            </div>
-            <div class="location">
-                <img src="./images/dombay.jpg" alt="Домбай" class="location__image">
-                <div class="location__info">
-                    <h2 class="location__name">
-                        Домбай
-                    </h2>
-                    <button type="button" class="location__rate">&#9825;</button>
-                </div>
-            </div>
-            <div class="location">
-                <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="location__image">
-                <div class="location__info">
-                    <h2 class="location__name">
-                        Гора Эльбрус
-                    </h2>
-                    <button type="button" class="location__rate">&#9825;</button>
-                </div>
-            </div>
-            <div class="location">
-                <img src="./images/dombay.jpg" alt="Домбай" class="location__image">
-                <div class="location__info">
-                    <h2 class="location__name">
-                        Домбай
-                    </h2>
-                    <button type="button" class="location__rate">&#9825;</button>
-                </div>
-            </div>
-            <div class="location">
-                <img src="./images/karachaevsk.jpg" alt="Карачаево-Черкесия" class="location__image">
-                <div class="location__info">
-                    <h2 class="location__name">
-                        Карачаево-Черкесия
-                    </h2>
-                    <button type="button" class="location__rate">&#9825;</button>
-                </div>
-            </div> -->
+        <section class="locations">           
         </section>
     </main>
     <footer class="footer">
@@ -120,7 +63,7 @@
     </div>
     <template id="location-card-template"> 
         <div class="location">
-            <img src="" alt="" class="location__image">
+            <img src="" alt="" class="location__image" onerror="if (this.src != './images/wrong-image.svg') this.src = './images/wrong-image.svg';">
             <button type="button" class="location__trash"></button>
             <div class="location__info">
                 <h2 class="location__name">          
@@ -129,6 +72,7 @@
             </div>
         </div>
     </template>
+    <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

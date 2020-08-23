@@ -21,7 +21,7 @@ const closeEdit = document.querySelector('.popup__close_profile-edit');
 
 
 function toggleMark(markName, str){        
-    markName.classList.toggle('location__rate_marked');
+    markName.classList.toggle(str);
 }
 
 function togglePopup(popupName){

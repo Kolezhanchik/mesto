@@ -9,12 +9,6 @@ const popupLocationRef = document.querySelector('.popup__text_type_ref');
 const closeAdd = document.querySelector('.popup__close_location-add');
 const popupImage = document.querySelector('.popup_type_show');
 const closeImage = document.querySelector('.popup__close_image');
-
-// "Аналогично. Элемент статичен, его следует вынести в global scope." 
-// const delBtn = document.querySelector('.location__trash'); 
-// console.log(delBtn); //NULL
-//элемента здесь еще нет, он создается с карточкой
-
 // edit profile popup
 const formEdit = document.querySelector('.popup__container_type_edit');
 const edit = document.querySelector('.profile__edit');
@@ -26,8 +20,8 @@ const profileRole = document.querySelector('.profile__role');
 const closeEdit = document.querySelector('.popup__close_profile-edit');
 
 
-function rateMark(){        
-    event.target.classList.toggle('location__rate_marked');
+function toggleMark(markName, str){        
+    markName.classList.toggle('location__rate_marked');
 }
 
 function togglePopup(popupName){
@@ -41,11 +35,13 @@ function addLocation(locationCard){
     
     const cardElement = cardTemplate.cloneNode(true);
     const cardImage = cardElement.querySelector('.location__image');    
-    
+    const delBtn = cardElement.querySelector('.location__trash'); 
+    const rateMark = cardElement.querySelector('.location__rate');
+
     cardImage.src = locationCard.link;
     cardImage.alt = 'фото' + ' ' + locationCard.name;
     cardElement.querySelector('.location__name').textContent = locationCard.name;    
-    cardElement.querySelector('.location__rate').addEventListener('click', rateMark);
+    rateMark.addEventListener('click', () => {toggleMark(rateMark, 'location__rate_marked')});
 
     locationsContainer.prepend(cardElement);
 
@@ -55,7 +51,6 @@ function addLocation(locationCard){
         togglePopup(popupImage);
     });
 
-    const delBtn = document.querySelector('.location__trash');    
     delBtn.addEventListener('click' , function(){    
         const listItem = delBtn.closest('.location');
         listItem.remove();
@@ -75,10 +70,10 @@ function saveAddPopup(event) {
 }
 
 formAdd.addEventListener('submit', saveAddPopup);
-closeAdd.addEventListener('click', togglePopup.bind(null, popupAdd));
-addCard.addEventListener('click', togglePopup.bind(null, popupAdd));
+closeAdd.addEventListener('click', () => {togglePopup(popupAdd)});
+addCard.addEventListener('click', () => {togglePopup(popupAdd)});
 
-closeImage.addEventListener('click', togglePopup.bind(null, popupImage));
+closeImage.addEventListener('click', () => {togglePopup(popupImage)});
 
 // edit profile popup
 
@@ -95,7 +90,7 @@ function saveEditPopup(event){
     togglePopup(popupEdit);
 }
 
-closeEdit.addEventListener('click', togglePopup.bind(null, popupEdit));
+closeEdit.addEventListener('click', () => {togglePopup(popupEdit)});
 edit.addEventListener('click', openEditPopup);
 formEdit.addEventListener('submit', saveEditPopup);
 

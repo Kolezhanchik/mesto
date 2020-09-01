@@ -25,3 +25,28 @@ const initialCards = [
     }
 ];
 
+/*<button id="btn1">Кнопка 1</button>
+<button id="btn2">Кнопка 2</button>
+function clickByBtn(evt) {
+    const target = evt.target;
+    if (target.id === 'btn1') {
+      removeBtnListener(evt.target);
+      addBtnListener(btn2)
+    } else {
+      removeBtnListener(evt.target);
+      addBtnListener(btn1)
+    }
+  
+    alert(evt.target.id);
+  }
+  
+  function removeBtnListener(btn) {
+    btn.removeEventListener('click', clickByBtn);
+  }
+  
+  function addBtnListener(btn) {
+    btn.addEventListener('click', clickByBtn);
+  }
+  
+  btn1.addEventListener('click', clickByBtn)
+  */

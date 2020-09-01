@@ -24,8 +24,27 @@ function toggleMark(markName, str){
     markName.classList.toggle(str);
 }
 
-function togglePopup(popupName){
-    popupName.classList.toggle('popup_hidden');
+function closeAnyPopup(modalName){
+    modalName.classList.remove('popup_opened');
+}
+
+function openAnyPopup(modalName){
+    modalName.classList.add('popup_opened');
+    const close = modalName.querySelector('.popup__close');
+    close.addEventListener('click', closePopup);
+    document.addEventListener('keydown', closeByEsc);
+    const overlay = document.querySelector('.popup_opened');
+    overlay.addEventListener('click', closeByOverlay);
+}
+
+function closePopup(event){   
+    const eventTarget = event.target;
+    deleteEventListener(eventTarget);
+    closeAnyPopup(eventTarget.closest('.popup'));
+}
+
+function deleteEventListener(eventTarget) {
+    eventTarget.removeEventListener('click', closePopup);
 }
 
 // location card 
@@ -48,7 +67,7 @@ function addLocation(locationCard){
     cardImage.addEventListener('click', function(){
         popupImage.querySelector('.popup__image').src = locationCard.link;
         popupImage.querySelector('.popup__caption').textContent = locationCard.name;
-        togglePopup(popupImage);
+        openAnyPopup(popupImage);
     });
 
     delBtn.addEventListener('click' , function(){    
@@ -65,32 +84,42 @@ function saveAddPopup(event) {
         link: popupLocationRef.value,
     }    
     addLocation(obj);
-    togglePopup(popupAdd);
+    openAnyPopup(popupAdd);
     formAdd.reset();    
 }
 
 formAdd.addEventListener('submit', saveAddPopup);
-closeAdd.addEventListener('click', () => {togglePopup(popupAdd)});
-addCard.addEventListener('click', () => {togglePopup(popupAdd)});
-
-closeImage.addEventListener('click', () => {togglePopup(popupImage)});
+addCard.addEventListener('click', () => {openAnyPopup(popupAdd)});
 
 // edit profile popup
 
 function openEditPopup(){    
     popupName.value = profileName.textContent;
     popupRole.value = profileRole.textContent;
-    togglePopup(popupEdit);
+    openAnyPopup(popupEdit);    
 }
 
 function saveEditPopup(event){ 
     event.preventDefault();    
     profileName.textContent = popupName.value;
     profileRole.textContent = popupRole.value;
-    togglePopup(popupEdit);
+    closeAnyPopup(popupEdit);
 }
 
-closeEdit.addEventListener('click', () => {togglePopup(popupEdit)});
+
 edit.addEventListener('click', openEditPopup);
 formEdit.addEventListener('submit', saveEditPopup);
 
+function closeByEsc(event){
+    if (event.keyCode === 27) {
+        const popupCurrent = document.querySelector('.popup_opened');
+        closeAnyPopup(popupCurrent);
+        document.removeEventListener('keydown', closeByEsc);
+    }
+}
+    
+function closeByOverlay(event){
+        event.stopPropagation();
+        closeAnyPopup(event.target);
+        document.removeEventListener('click', closeByOverlay);    
+}

@@ -37,7 +37,14 @@ function openAnyPopup(modalName){
     overlay.addEventListener('click', closeByOverlay);
 }
 
-function closePopup(event){   
+function openPopup(modalName){    
+    const popupSbmBtn = modalName.querySelector('.popup__btn');
+    popupSbmBtn.setAttribute("disabled", "");
+    popupSbmBtn.classList.add('popup__btn_disabled');
+    openAnyPopup(modalName);
+}
+
+function closePopup(event){       
     const eventTarget = event.target;
     deleteEventListener(eventTarget);
     closeAnyPopup(eventTarget.closest('.popup'));
@@ -84,19 +91,19 @@ function saveAddPopup(event) {
         link: popupLocationRef.value,
     }    
     addLocation(obj);
-    openAnyPopup(popupAdd);
+    closeAnyPopup(popupAdd);
     formAdd.reset();    
 }
 
 formAdd.addEventListener('submit', saveAddPopup);
-addCard.addEventListener('click', () => {openAnyPopup(popupAdd)});
+addCard.addEventListener('click', () => {openPopup(popupAdd)});
 
 // edit profile popup
 
 function openEditPopup(){    
     popupName.value = profileName.textContent;
     popupRole.value = profileRole.textContent;
-    openAnyPopup(popupEdit);    
+    openPopup(popupEdit);    
 }
 
 function saveEditPopup(event){ 

@@ -26,6 +26,8 @@ function toggleMark(markName, str){
 
 function closeAnyPopup(modalName){
     modalName.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEsc);    
+    document.removeEventListener('click', closeByOverlay);
 }
 
 function openAnyPopup(modalName){
@@ -86,7 +88,7 @@ function addLocation(locationCard){
 function saveAddPopup(event) {    
     event.preventDefault(); 
     
-    let obj = {        
+    const obj = {        
         name: popupLocationName.value,
         link: popupLocationRef.value,
     }    
@@ -120,13 +122,11 @@ formEdit.addEventListener('submit', saveEditPopup);
 function closeByEsc(event){
     if (event.keyCode === 27) {
         const popupCurrent = document.querySelector('.popup_opened');
-        closeAnyPopup(popupCurrent);
-        document.removeEventListener('keydown', closeByEsc);
+        closeAnyPopup(popupCurrent);        
     }
 }
     
 function closeByOverlay(event){
         event.stopPropagation();
-        closeAnyPopup(event.target);
-        document.removeEventListener('click', closeByOverlay);    
+        closeAnyPopup(event.target);    
 }

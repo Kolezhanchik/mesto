@@ -79,11 +79,13 @@ function addLocation(locationCard){
         openAnyPopup(popupImage);
     });
 
-    delBtn.addEventListener('click' , function(){    
+    delBtn.addEventListener('click', function(){    
         const listItem = delBtn.closest('.location');
         listItem.remove();
     });
+    formAdd.addEventListener('submit', saveAddPopup);
 }
+
 
 function saveAddPopup(event) {    
     event.preventDefault(); 
@@ -95,9 +97,9 @@ function saveAddPopup(event) {
     addLocation(obj);
     closeAnyPopup(popupAdd);
     formAdd.reset();    
+    formAdd.removeEventListener('submit', saveAddPopup);
 }
 
-formAdd.addEventListener('submit', saveAddPopup);
 addCard.addEventListener('click', () => {openPopup(popupAdd)});
 
 // edit profile popup
@@ -105,7 +107,8 @@ addCard.addEventListener('click', () => {openPopup(popupAdd)});
 function openEditPopup(){    
     popupName.value = profileName.textContent;
     popupRole.value = profileRole.textContent;
-    openPopup(popupEdit);    
+    openPopup(popupEdit); 
+    formEdit.addEventListener('submit', saveEditPopup);   
 }
 
 function saveEditPopup(event){ 
@@ -113,11 +116,10 @@ function saveEditPopup(event){
     profileName.textContent = popupName.value;
     profileRole.textContent = popupRole.value;
     closeAnyPopup(popupEdit);
+    formEdit.removeEventListener('submit', saveEditPopup);
 }
 
-
 edit.addEventListener('click', openEditPopup);
-formEdit.addEventListener('submit', saveEditPopup);
 
 function closeByEsc(event){
     if (event.keyCode === 27) {

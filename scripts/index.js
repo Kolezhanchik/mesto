@@ -57,7 +57,9 @@ function deleteEventListener(eventTarget) {
 }
 
 // location card 
-initialCards.forEach(item => addLocation(item));
+initialCards.forEach(item => {
+    locationsContainer.prepend(addLocation(item));
+});
 
 function addLocation(locationCard){
     
@@ -71,8 +73,6 @@ function addLocation(locationCard){
     cardElement.querySelector('.location__name').textContent = locationCard.name;    
     rateMark.addEventListener('click', () => {toggleMark(rateMark, 'location__rate_marked')});
 
-    locationsContainer.prepend(cardElement);
-
     cardImage.addEventListener('click', function(){
         popupImage.querySelector('.popup__image').src = locationCard.link;
         popupImage.querySelector('.popup__caption').textContent = locationCard.name;
@@ -83,8 +83,8 @@ function addLocation(locationCard){
         const listItem = delBtn.closest('.location');
         listItem.remove();
     });    
+    return cardElement;
 }
-
 
 function saveAddPopup(event) {    
     event.preventDefault(); 

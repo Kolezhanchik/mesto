@@ -82,8 +82,7 @@ function addLocation(locationCard){
     delBtn.addEventListener('click', function(){    
         const listItem = delBtn.closest('.location');
         listItem.remove();
-    });
-    formAdd.addEventListener('submit', saveAddPopup);
+    });    
 }
 
 
@@ -100,7 +99,10 @@ function saveAddPopup(event) {
     formAdd.removeEventListener('submit', saveAddPopup);
 }
 
-addCard.addEventListener('click', () => {openPopup(popupAdd)});
+addCard.addEventListener('click', () => {
+    formAdd.addEventListener('submit', saveAddPopup);
+    openPopup(popupAdd)
+});
 
 // edit profile popup
 

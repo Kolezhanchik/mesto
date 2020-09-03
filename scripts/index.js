@@ -57,7 +57,8 @@ function deleteEventListener(eventTarget) {
 }
 
 // location card 
-initialCards.forEach(item => {
+
+initialCards.forEach((item) => {
     locationsContainer.prepend(addLocation(item));
 });
 
@@ -93,7 +94,7 @@ function saveAddPopup(event) {
         name: popupLocationName.value,
         link: popupLocationRef.value,
     }    
-    addLocation(obj);
+    locationsContainer.prepend(addLocation(obj));
     closeAnyPopup(popupAdd);
     formAdd.reset();    
     formAdd.removeEventListener('submit', saveAddPopup);

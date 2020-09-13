@@ -37,7 +37,7 @@ function saveAddPopup(event) {
     const card = new Card(obj, '#location-card-template');
     const cardElem = card.generateCard();
     document.querySelector('.locations').prepend(cardElem);
-    closeAnyPopup(popupAdd);
+    removeListeners(popupAdd);
     formAdd.reset();
     formAdd.removeEventListener('submit', saveAddPopup);
 }
@@ -61,7 +61,7 @@ function saveEditPopup(event) {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileRole.textContent = popupRole.value;
-    closeAnyPopup(popupEdit);
+    removeListeners(popupEdit);
     formEdit.removeEventListener('submit', saveEditPopup);
 }
 
@@ -69,32 +69,27 @@ edit.addEventListener('click', openEditPopup);
 
 // close/open popups handlers
 
-function closeAnyPopup(modalName) {
+function removeListeners(modalName) {
     modalName.classList.remove('popup_opened');
     document.removeEventListener('keydown', closeByEsc);
     document.removeEventListener('click', closeByOverlay);
-}
-
-function openAnyPopup(modalName) {
-    modalName.classList.add('popup_opened');
-    const close = modalName.querySelector('.popup__close');
-    close.addEventListener('click', closePopup);
-    document.addEventListener('keydown', closeByEsc);
-    const overlay = document.querySelector('.popup_opened');
-    overlay.addEventListener('click', closeByOverlay);
 }
 
 function openPopup(modalName) {
     const popupSbmBtn = modalName.querySelector('.popup__btn');
     popupSbmBtn.setAttribute("disabled", "");
     popupSbmBtn.classList.add('popup__btn_disabled');
-    openAnyPopup(modalName);
+    modalName.classList.add('popup_opened');
+    
+    document.addEventListener('keydown', closeByEsc);
+    modalName.querySelector('.popup__close').addEventListener('click', closePopup);    
+    document.querySelector('.popup_opened').addEventListener('click', closeByOverlay);
 }
 
 function closePopup(event) {
     const eventTarget = event.target;
     deleteEventListener(eventTarget);
-    closeAnyPopup(eventTarget.closest('.popup'));
+    removeListeners(eventTarget.closest('.popup'));
 }
 
 function deleteEventListener(eventTarget) {
@@ -104,13 +99,13 @@ function deleteEventListener(eventTarget) {
 function closeByEsc(event) {
     if (event.keyCode === 27) {
         const popupCurrent = document.querySelector('.popup_opened');
-        closeAnyPopup(popupCurrent);
+        removeListeners(popupCurrent);
     }
 }
 
 function closeByOverlay(event) {
     event.stopPropagation();
-    closeAnyPopup(event.target);
+    removeListeners(event.target);
 }
 
 //forms validation 

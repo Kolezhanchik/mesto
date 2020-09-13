@@ -1,4 +1,5 @@
 export default class Card {
+    
     constructor(cardData, cardSelector) {
         this._cardSelector = cardSelector;
         this._name = cardData.name;
@@ -67,16 +68,16 @@ export default class Card {
     }
 
     _handlecloseByEsc(event, elem) {
-        this._removeCloseListners(elem);
         if (event.keyCode === 27) {
             elem.classList.remove('popup_opened');
+            this._removeCloseListners(elem);
         }
     }
 
     _handlecloseByOverlay(event, elem) {
-        this._removeCloseListners(elem);
         if (event.target === event.currentTarget) {
             elem.classList.remove('popup_opened');
+            this._removeCloseListners(elem);
         }
     }
 

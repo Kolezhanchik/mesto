@@ -1,5 +1,5 @@
-class Card {
-    constructor(cardData, cardSelector){
+export default class Card {
+    constructor(cardData, cardSelector) {
         this._cardSelector = cardSelector;
         this._name = cardData.name;
         this._link = cardData.link;
@@ -7,7 +7,7 @@ class Card {
 
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector)
-        .content.querySelector('.location').cloneNode(true);
+            .content.querySelector('.location').cloneNode(true);
         return cardElement;
     }
 
@@ -15,18 +15,18 @@ class Card {
         this._element = this._getTemplate();
         this._element.querySelector('.location__image').src = this._link;
         this._element.querySelector('.location__name').textContent = this._name;
-        
+
         this._setEventListeners();
 
         return this._element;
     }
 
     _setEventListeners() {
-        this._element.querySelector('.location__trash').addEventListener('click' , () => {
+        this._element.querySelector('.location__trash').addEventListener('click', () => {
             this._handleDeleteClick();
         });
 
-        this._element.querySelector('.location__rate').addEventListener('click' , () => {
+        this._element.querySelector('.location__rate').addEventListener('click', () => {
             this._handleRateClick();
         });
 
@@ -45,10 +45,9 @@ class Card {
 
     _handleImageClick() {
         this._popupImageOpen(document.querySelector('.popup_type_show'));
-
     }
 
-    _popupImageOpen(elem){
+    _popupImageOpen(elem) {
         elem.querySelector('.popup__image').src = this._link;
         elem.querySelector('.popup__caption').textContent = this._name;
         elem.classList.add('popup_opened');
@@ -56,40 +55,36 @@ class Card {
             this._handlePopupClose(elem);
         });
 
-        document.addEventListener('keydown', (event) => {this._handlecloseByEsc(event, elem);
+        document.addEventListener('keydown', (event) => {
+            this._handlecloseByEsc(event, elem);
         });
-        document.querySelector('.popup_type_show').addEventListener('click', (event) => {this._handlecloseByOverlay(event, elem)});
+        document.querySelector('.popup_type_show').addEventListener('click', (event) => { this._handlecloseByOverlay(event, elem) });
     }
 
-    _handlePopupClose(elem) {   
+    _handlePopupClose(elem) {
         this._removeCloseListners(elem);
-        elem.classList.remove('popup_opened');        
+        elem.classList.remove('popup_opened');
     }
 
-    _handlecloseByEsc(event, elem){
+    _handlecloseByEsc(event, elem) {
         this._removeCloseListners(elem);
         if (event.keyCode === 27) {
             elem.classList.remove('popup_opened');
         }
     }
-    
-    _handlecloseByOverlay(event, elem){
+
+    _handlecloseByOverlay(event, elem) {
         this._removeCloseListners(elem);
         if (event.target === event.currentTarget) {
             elem.classList.remove('popup_opened');
-        }       
+        }
     }
 
-    _removeCloseListners(elem){
+    _removeCloseListners(elem) {
         document.querySelector('.popup_type_show').removeEventListener('click', this._handlecloseByOverlay);
         elem.querySelector('.popup__close').removeEventListener('click', this._handlePopupClose);
         document.removeEventListener('click', this._handlecloseByEsc);
-        
+
     }
 }
 
-initialCards.forEach((item) => {
-    const card = new Card(item, '#location-card-template');
-    const cardElem = card.generateCard();
-    document.querySelector('.locations').prepend(cardElem);
-});

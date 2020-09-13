@@ -1,14 +1,15 @@
+import Card from './components/Card.js';
+import FormValidator from './components/FormValidator.js';
+
+import { initialCards } from './units/initialCards.js';
+import { data } from './units/formData.js';
+
 // location popup 
-const cardTemplate = document.querySelector('#location-card-template').content;
 const formAdd = document.querySelector('.popup__container_type_add');
-const locationsContainer = document.querySelector('.locations');
 const addCard = document.querySelector('.profile__add');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupLocationName = document.querySelector('.popup__text_type_location-name');
 const popupLocationRef = document.querySelector('.popup__text_type_ref');
-const closeAdd = document.querySelector('.popup__close_location-add');
-const popupImage = document.querySelector('.popup_type_show');
-const closeImage = document.querySelector('.popup__close_image');
 // edit profile popup
 const formEdit = document.querySelector('.popup__container_type_edit');
 const edit = document.querySelector('.profile__edit');
@@ -17,12 +18,56 @@ const popupName = document.querySelector('.popup__text_type_name');
 const popupRole = document.querySelector('.popup__text_type_role');
 const profileName = document.querySelector('.profile__name');
 const profileRole = document.querySelector('.profile__role');
-const closeEdit = document.querySelector('.popup__close_profile-edit');
 
+// initial cards rendering
+initialCards.forEach((item) => {
+    const card = new Card(item, '#location-card-template');
+    const cardElem = card.generateCard();
+    document.querySelector('.locations').prepend(cardElem);
+});
 
-function toggleMark(markName, str) {
-    markName.classList.toggle(str);
+// new card adding
+function saveAddPopup(event) {
+    event.preventDefault();
+
+    const obj = {
+        name: popupLocationName.value,
+        link: popupLocationRef.value,
+    }
+    const card = new Card(obj, '#location-card-template');
+    const cardElem = card.generateCard();
+    document.querySelector('.locations').prepend(cardElem);
+    closeAnyPopup(popupAdd);
+    formAdd.reset();
+    formAdd.removeEventListener('submit', saveAddPopup);
 }
+
+// create card btn handler
+addCard.addEventListener('click', () => {
+    formAdd.addEventListener('submit', saveAddPopup);
+    openPopup(popupAdd)
+});
+
+// edit profile btn handler
+
+function openEditPopup() {
+    popupName.value = profileName.textContent;
+    popupRole.value = profileRole.textContent;
+    openPopup(popupEdit);
+    formEdit.addEventListener('submit', saveEditPopup);
+}
+
+function saveEditPopup(event) {
+    event.preventDefault();
+    profileName.textContent = popupName.value;
+    profileRole.textContent = popupRole.value;
+    closeAnyPopup(popupEdit);
+    formEdit.removeEventListener('submit', saveEditPopup);
+}
+
+edit.addEventListener('click', openEditPopup);
+
+// close/open popups handlers
 
 function closeAnyPopup(modalName) {
     modalName.classList.remove('popup_opened');
@@ -56,74 +101,6 @@ function deleteEventListener(eventTarget) {
     eventTarget.removeEventListener('click', closePopup);
 }
 
-// location card 
-
-initialCards.forEach((item) => {
-    locationsContainer.prepend(createLocation(item));
-});
-
-function createLocation(locationCard) {
-
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardImage = cardElement.querySelector('.location__image');
-    const delBtn = cardElement.querySelector('.location__trash');
-    const rateMark = cardElement.querySelector('.location__rate');
-
-    cardImage.src = locationCard.link;
-    cardImage.alt = 'фото' + ' ' + locationCard.name;
-    cardElement.querySelector('.location__name').textContent = locationCard.name;
-    rateMark.addEventListener('click', () => { toggleMark(rateMark, 'location__rate_marked') });
-
-    cardImage.addEventListener('click', function () {
-        popupImage.querySelector('.popup__image').src = locationCard.link;
-        popupImage.querySelector('.popup__caption').textContent = locationCard.name;
-        openAnyPopup(popupImage);
-    });
-
-    delBtn.addEventListener('click', function () {
-        const listItem = delBtn.closest('.location');
-        listItem.remove();
-    });
-    return cardElement;
-}
-
-function saveAddPopup(event) {
-    event.preventDefault();
-
-    const obj = {
-        name: popupLocationName.value,
-        link: popupLocationRef.value,
-    }
-    locationsContainer.prepend(createLocation(obj));
-    closeAnyPopup(popupAdd);
-    formAdd.reset();
-    formAdd.removeEventListener('submit', saveAddPopup);
-}
-
-addCard.addEventListener('click', () => {
-    formAdd.addEventListener('submit', saveAddPopup);
-    openPopup(popupAdd)
-});
-
-// edit profile popup
-
-function openEditPopup() {
-    popupName.value = profileName.textContent;
-    popupRole.value = profileRole.textContent;
-    openPopup(popupEdit);
-    formEdit.addEventListener('submit', saveEditPopup);
-}
-
-function saveEditPopup(event) {
-    event.preventDefault();
-    profileName.textContent = popupName.value;
-    profileRole.textContent = popupRole.value;
-    closeAnyPopup(popupEdit);
-    formEdit.removeEventListener('submit', saveEditPopup);
-}
-
-edit.addEventListener('click', openEditPopup);
-
 function closeByEsc(event) {
     if (event.keyCode === 27) {
         const popupCurrent = document.querySelector('.popup_opened');
@@ -135,3 +112,10 @@ function closeByOverlay(event) {
     event.stopPropagation();
     closeAnyPopup(event.target);
 }
+
+//forms validation 
+const editValidation = new FormValidator(data, '.popup__container_type_edit');
+editValidation.enableValidation();
+
+const addValidation = new FormValidator(data, '.popup__container_type_add');
+addValidation.enableValidation();

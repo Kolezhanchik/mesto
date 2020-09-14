@@ -21,7 +21,7 @@ const profileRole = document.querySelector('.profile__role');
 
 // initial cards rendering
 initialCards.forEach((item) => {
-    const card = new Card(item, '#location-card-template');
+    const card = new Card(item, '#location-card-template', popupImageOpen);
     const cardElem = card.generateCard();
     document.querySelector('.locations').prepend(cardElem);
 });
@@ -34,13 +34,20 @@ function saveAddPopup(event) {
         name: popupLocationName.value,
         link: popupLocationRef.value,
     }
-    const card = new Card(obj, '#location-card-template');
+    const card = new Card(obj, '#location-card-template', popupImageOpen);
     const cardElem = card.generateCard();
     document.querySelector('.locations').prepend(cardElem);
-    removeListeners(popupAdd);
+    closeAnyPopup(popupAdd);
     formAdd.reset();
     formAdd.removeEventListener('submit', saveAddPopup);
 }
+
+function popupImageOpen(elem) {
+    elem.querySelector('.popup__image').src = this._link;
+    elem.querySelector('.popup__caption').textContent = this._name;
+    openAnyPopup(elem);
+}
+
 
 // create card btn handler
 addCard.addEventListener('click', () => {
@@ -61,7 +68,7 @@ function saveEditPopup(event) {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileRole.textContent = popupRole.value;
-    removeListeners(popupEdit);
+    closeAnyPopup(popupEdit);
     formEdit.removeEventListener('submit', saveEditPopup);
 }
 
@@ -69,27 +76,32 @@ edit.addEventListener('click', openEditPopup);
 
 // close/open popups handlers
 
-function removeListeners(modalName) {
+function closeAnyPopup(modalName) {
     modalName.classList.remove('popup_opened');
     document.removeEventListener('keydown', closeByEsc);
     document.removeEventListener('click', closeByOverlay);
 }
 
-function openPopup(modalName) {
-    const popupSbmBtn = modalName.querySelector('.popup__btn');
-    popupSbmBtn.setAttribute("disabled", "");
-    popupSbmBtn.classList.add('popup__btn_disabled');
-    modalName.classList.add('popup_opened');
-    
-    document.addEventListener('keydown', closeByEsc);
-    modalName.querySelector('.popup__close').addEventListener('click', closePopup);    
-    document.querySelector('.popup_opened').addEventListener('click', closeByOverlay);
-}
+function openAnyPopup(modalName){ 
+    modalName.classList.add('popup_opened'); 
+    const close = modalName.querySelector('.popup__close'); 
+    close.addEventListener('click', closePopup); 
+    document.addEventListener('keydown', closeByEsc); 
+    const overlay = document.querySelector('.popup_opened'); 
+    overlay.addEventListener('click', closeByOverlay); 
+} 
+ 
+function openPopup(modalName){     
+    const popupSbmBtn = modalName.querySelector('.popup__btn'); 
+    popupSbmBtn.setAttribute("disabled", ""); 
+    popupSbmBtn.classList.add('popup__btn_disabled'); 
+    openAnyPopup(modalName); 
+} 
 
 function closePopup(event) {
     const eventTarget = event.target;
     deleteEventListener(eventTarget);
-    removeListeners(eventTarget.closest('.popup'));
+    closeAnyPopup(eventTarget.closest('.popup'));
 }
 
 function deleteEventListener(eventTarget) {
@@ -99,13 +111,13 @@ function deleteEventListener(eventTarget) {
 function closeByEsc(event) {
     if (event.keyCode === 27) {
         const popupCurrent = document.querySelector('.popup_opened');
-        removeListeners(popupCurrent);
+        closeAnyPopup(popupCurrent);
     }
 }
 
 function closeByOverlay(event) {
     event.stopPropagation();
-    removeListeners(event.target);
+    closeAnyPopup(event.target);
 }
 
 //forms validation 

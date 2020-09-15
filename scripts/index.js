@@ -23,7 +23,7 @@ const profileRole = document.querySelector('.profile__role');
 initialCards.forEach((item) => {
     const card = new Card(item, '#location-card-template', popupImageOpen);
     const cardElem = card.generateCard();
-    document.querySelector('.locations').prepend(cardElem);
+    document.querySelector('.locations').append(cardElem);
 });
 
 // new card adding
@@ -50,8 +50,11 @@ function popupImageOpen(elem) {
 
 
 // create card btn handler
-addCard.addEventListener('click', () => {
+addCard.addEventListener('click', () => {    
     formAdd.addEventListener('submit', saveAddPopup);
+    addValidation.hideInputError(popupLocationName);
+    addValidation.hideInputError(popupLocationRef);
+    formAdd.reset();
     openPopup(popupAdd)
 });
 
@@ -60,6 +63,8 @@ addCard.addEventListener('click', () => {
 function openEditPopup() {
     popupName.value = profileName.textContent;
     popupRole.value = profileRole.textContent;
+    editValidation.hideInputError(popupName);
+    editValidation.hideInputError(popupRole);
     openPopup(popupEdit);
     formEdit.addEventListener('submit', saveEditPopup);
 }
@@ -95,6 +100,7 @@ function openPopup(modalName){
     const popupSbmBtn = modalName.querySelector('.popup__btn'); 
     popupSbmBtn.setAttribute("disabled", ""); 
     popupSbmBtn.classList.add('popup__btn_disabled'); 
+    
     openAnyPopup(modalName); 
 } 
 

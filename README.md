@@ -19,4 +19,3 @@
 
 
 * [Ссылка на веб-страницу проекта](https://kolenhen.github.io/mesto/index.html)
-

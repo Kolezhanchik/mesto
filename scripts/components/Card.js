@@ -1,10 +1,11 @@
 export default class Card {
     
-    constructor(cardData, cardSelector, popupImageOpen) {
+    constructor({handleCardClick}, cardData, cardSelector) {
         this._cardSelector = cardSelector;
         this._name = cardData.name;
         this._link = cardData.link;
-        this._popupImageOpen = popupImageOpen;
+        this._handleCardClick = handleCardClick;
+        this._cardData = cardData;
     }
 
     _getTemplate() {
@@ -32,9 +33,7 @@ export default class Card {
             this._handleRateClick();
         });
 
-        this._element.querySelector('.location__image').addEventListener('click', () => {
-            this._handleImageClick();
-        });
+        this._element.querySelector('.location__image').addEventListener('click', () => { this._handleCardClick(this._cardData);});
     }
 
     _handleDeleteClick() {
@@ -45,8 +44,5 @@ export default class Card {
         this._element.querySelector('.location__rate').classList.toggle('location__rate_marked');
     }
 
-    _handleImageClick() {
-        this._popupImageOpen(document.querySelector('.popup_type_show'));
-    }
 }
 

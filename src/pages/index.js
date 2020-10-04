@@ -1,3 +1,5 @@
+import './index.css';
+
 import Card from '../scripts/components/Card.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
@@ -82,3 +84,4 @@ const editValidation = new FormValidator(data, '.popup__container_type_edit');
 
 
 const addValidation = new FormValidator(data, '.popup__container_type_add');
+

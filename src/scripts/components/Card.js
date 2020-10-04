@@ -1,3 +1,5 @@
+import wrongImage from '../../images/wrong-image.svg';
+
 export default class Card {
 
     constructor({ handleCardClick }, cardData, cardSelector) {
@@ -17,6 +19,7 @@ export default class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._element.querySelector('.location__image').src = this._link;
+        this._element.querySelector('.location__image').onerror = () => this._element.querySelector('.location__image').src = wrongImage;
         this._element.querySelector('.location__name').textContent = this._name;
 
         this._setEventListeners();

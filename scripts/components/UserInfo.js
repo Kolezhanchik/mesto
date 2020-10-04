@@ -1,4 +1,4 @@
-import { profileName, profileRole } from './units/constants.js';
+import { profileName, profileRole } from '../units/constants.js';
 
 export default class UserInfo {
     constructor(obj){
@@ -13,8 +13,8 @@ export default class UserInfo {
         };       
     }
 
-    setUserInfo(){
-        profileName.value = this._name;
-        profileRole.value = this._role;
+    setUserInfo(obj){
+        profileName.textContent = obj.userName;
+        profileRole.textContent = obj.userRole;
     }
 }

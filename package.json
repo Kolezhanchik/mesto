@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rd /s /q dist && webpack",
+    "clean": "rimraf dist",
     "dev": "webpack-dev-server --open --watch"
   },
   "repository": {

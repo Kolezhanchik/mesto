@@ -40,7 +40,7 @@ export default class Card {
     }
 
     _handleDeleteClick() {
-        this._element.querySelector('.location__trash').closest('.location').remove();
+        this._element.remove();
     }
 
     _handleRateClick() {

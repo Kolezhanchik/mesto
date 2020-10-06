@@ -1,20 +1,19 @@
-import { profileName, profileRole } from '../units/constants.js';
-
 export default class UserInfo {
-    constructor(obj){
-        this._name = obj.name;
-        this._role = obj.role;
-    }
+  constructor(obj) {
+    this._name = obj.name;
+    this._role = obj.role;
+  }
 
-    getUserInfo(){
-        return this._obj = {
-            name: this._name,
-            role: this._role,
-        };       
-    }
+  getUserInfo() {
+    const obj = {
+      name: this._name.textContent,
+      role: this._role.textContent,
+    };
+    return obj;
+  }
 
-    setUserInfo(obj){
-        profileName.textContent = obj.userName;
-        profileRole.textContent = obj.userRole;
-    }
+  setUserInfo(obj) {
+    this._name.textContent = obj.userName;
+    this._role.textContent = obj.userRole;
+  }
 }

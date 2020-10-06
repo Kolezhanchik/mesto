@@ -1,37 +1,36 @@
 export default class Popup {
-    constructor(containerSelector) {
-        this._containerSelector = document.querySelector(containerSelector);
-    }
+  constructor(containerSelector) {
+    this._containerElement = document.querySelector(containerSelector);
+  }
 
-    open() {
-        this._containerSelector.classList.add('popup_opened');
-    }
+  open() {
+    this._containerElement.classList.add('popup_opened');
+    this._handleEscClose = this._handleEscClose.bind(this);
+    this._closeByOverlay = this._closeByOverlay.bind(this);
+    document.addEventListener('keydown', this._handleEscClose);
+    this._containerElement.addEventListener('click', this._closeByOverlay);
+  }
 
-    close() {
-        this._containerSelector.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._handleEscClose);
-        this._containerSelector.querySelector('.popup__close').removeEventListener('click', this.close);
-        this._containerSelector.removeEventListener('click', this._closeByOverlay);
-    }
+  close() {
+    this._containerElement.classList.remove('popup_opened');
+    document.removeEventListener('keydown', this._handleEscClose);
+    this._containerElement.removeEventListener('click', this._closeByOverlay);
+  }
 
-    _handleEscClose(event) {
-        if (event.keyCode === 27) {
-            this.close();
-        }
+  _handleEscClose(event) {
+    if (event.key === "Escape") {
+      this.close();
     }
+  }
 
-    _closeByOverlay(event) {
-        if (event.target === event.currentTarget) {
-            this.close();
-        }
+  _closeByOverlay(event) {
+    if (event.target === event.currentTarget) {
+      this.close();
     }
+  }
 
-    setEventListeners() {
-        this.close = this.close.bind(this);
-        this._handleEscClose = this._handleEscClose.bind(this);
-        this._closeByOverlay = this._closeByOverlay.bind(this);
-        this._containerSelector.querySelector('.popup__close').addEventListener('click', this.close);
-        document.addEventListener('keydown', this._handleEscClose);
-        this._containerSelector.addEventListener('click', this._closeByOverlay);
-    }
+  setEventListeners() {
+    this.close = this.close.bind(this);
+    this._containerElement.querySelector('.popup__close').addEventListener('click', this.close);
+  }
 }

@@ -20,17 +20,21 @@ import { initialCards } from '../scripts/units/initialCards.js';
 import { data } from '../scripts/units/formData.js';
 
 // cards rendering
+function newCardGen(item) {
+  const card = new Card({
+    handleCardClick: (item) => {
+      const popupWithImage = new PopupWithImage('.popup_type_show');
+      popupWithImage.open(item);
+      popupWithImage.setEventListeners();
+    }
+  }, item, '#location-card-template');
+  return card.generateCard();
+}
+
 const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card({
-      handleCardClick: (item) => {
-        const popupWithImage = new PopupWithImage(item, '.popup_type_show');
-        popupWithImage.open();
-      }
-    }, item, '#location-card-template');
-    const cardElem = card.generateCard();
-    cardsList.addItem(cardElem);
+    cardsList.addItem(newCardGen(item));
   },
 }, '.locations');
 
@@ -43,17 +47,10 @@ const addPopup = new PopupWithForm({
       name: list.locationName,
       link: list.locationRef,
     }
-    const card = new Card({
-      handleCardClick: (obj) => {
-        popupWithImage.open(obj);
-      }
-    }, obj, '#location-card-template');
-    cardsList.addNew(card.generateCard());
+    cardsList.addNew(newCardGen(obj));
     addPopup.close();
   }
 }, '.popup_type_add');
-
-const popupWithImage = new PopupWithImage('.popup_type_show');
 
 addCard.addEventListener('click', () => {
   addPopup.open();

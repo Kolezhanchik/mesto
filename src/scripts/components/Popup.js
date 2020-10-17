@@ -3,12 +3,12 @@ export default class Popup {
     this._containerElement = document.querySelector(containerSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
     this._closeByOverlay = this._closeByOverlay.bind(this);
+
   }
 
   open() {
     this._containerElement.classList.add('popup_opened');
     document.addEventListener('keydown', this._handleEscClose);
-
   }
 
   close() {

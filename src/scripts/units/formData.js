@@ -1,4 +1,4 @@
-export const data = {
+export const popupSelectors = {
     inputSelector: '.popup__text',
     submitButtonSelector: '.popup__btn',
     inactiveButtonClass: 'popup__btn_disabled',

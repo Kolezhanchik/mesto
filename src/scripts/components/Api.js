@@ -72,7 +72,8 @@ export default class Api {
         name: profile.name,
         about: profile.about,
       }),
-    });
+    })
+    .then(this._responseHandler);
   }
 
   setProfileAvatar(obj) {
@@ -82,7 +83,8 @@ export default class Api {
       body: JSON.stringify({
         avatar: obj.avatar,
       }),
-    });
+    })
+    .then(this._responseHandler);
   }
 
 }

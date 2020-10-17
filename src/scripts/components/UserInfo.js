@@ -2,6 +2,7 @@ export default class UserInfo {
   constructor(obj) {
     this._name = obj.name;
     this._role = obj.role;
+    this._link = obj.link;
   }
 
   getUserInfo() {
@@ -9,6 +10,10 @@ export default class UserInfo {
       name: this._name.textContent,
       about: this._role.textContent,
     };
+  }
+
+  setUserAvatar(obj){
+    this._link.src = obj.avatar;
   }
 
   setUserInfo(obj) {

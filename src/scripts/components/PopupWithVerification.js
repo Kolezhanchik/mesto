@@ -1,7 +1,7 @@
 import Popup from './Popup.js';
 
 export default class PopupWithVerification extends Popup {
-  constructor({ handleSubmitButton }, containerSelector) {
+  constructor({ handleSubmitButton }, containerSelector, card) {
     super(containerSelector);
     this._handleSubmitButton = handleSubmitButton;
     this._formElement = this._containerElement.querySelector('.popup__form');

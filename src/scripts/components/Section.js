@@ -13,10 +13,8 @@ export default class Section {
     this._container.append(element);
   }
 
-  delItem(id){
-    let card = document.querySelector('#' + id);
-    card.remove();
-    card = null;
+  delItem(element) {
+    element.remove();
   }
 
   addNew(element) {

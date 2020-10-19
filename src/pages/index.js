@@ -185,7 +185,7 @@ const editPopup = new PopupWithForm({
         alert(error);
       })
       .finally(() => {
-        editPopup.preloader(true);
+        editPopup.preloader(false);
       })
   }
 }, '.popup_type_edit');

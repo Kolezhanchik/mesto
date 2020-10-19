@@ -82,12 +82,7 @@ export default class Card {
   }
 
   deleteCard(){
-      // let card = document.querySelector('#' + id);
-      // card.remove();
-      // card = null;
-
     this._handleDeleteClick(this._element);
-
   }
 
   _handleDeleteClick(element) {

@@ -1,4 +1,4 @@
-# Place
+# Location
 ## A training project completed as part of the Yandex.Practicum/Frontend Developer training
 ## Fourth sprint, adaptive layout and mockup processing, JS/browser event processing 
 
@@ -18,4 +18,4 @@ The project tech stack is:
 10. OOP
 
 
-* [Link to the project web page](https://kolenhen.github.io/mesto/index.html)
+* [Link to the project web page](https://Kolezhanchik.github.io/mesto/index.html)
